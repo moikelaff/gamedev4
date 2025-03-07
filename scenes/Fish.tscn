@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://ch5dpbk20444w"]
+
+[ext_resource type="Script" path="res://scenes/fish.gd" id="1_re8y7"]
+[ext_resource type="Texture2D" uid="uid://bpomp7laf2qmf" path="res://assets/kenney_platformerpack/PNG/Enemies/fishBlue_dead.png" id="1_s7oo0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_02xjq"]
+radius = 54.0093
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hplrr"]
+
+[node name="RigidBody2D" type="RigidBody2D"]
+position = Vector2(126, 74)
+scale = Vector2(0.319999, 0.378353)
+script = ExtResource("1_re8y7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2, 0)
+texture = ExtResource("1_s7oo0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0)
+scale = Vector2(0.499999, 1.21144)
+shape = SubResource("CircleShape2D_02xjq")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-3.12501, -2.64304)
+scale = Vector2(3.34605, 6.435)
+shape = SubResource("CircleShape2D_hplrr")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

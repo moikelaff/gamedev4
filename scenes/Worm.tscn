@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddn3taqki3jwa"]
+
+[ext_resource type="Script" path="res://worm.gd" id="1_bnsgu"]
+[ext_resource type="Texture2D" uid="uid://bvbwwedlhyb7i" path="res://assets/kenney_platformerpack/PNG/Enemies/wormGreen_move.png" id="1_gw87n"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l6eyr"]
+radius = 22.0193
+height = 118.177
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5dgfi"]
+radius = 24.0141
+height = 117.981
+
+[node name="RigidBody2D" type="RigidBody2D"]
+script = ExtResource("1_bnsgu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_gw87n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 43)
+rotation = 4.68452
+shape = SubResource("CapsuleShape2D_l6eyr")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 41)
+rotation = 1.58883
+shape = SubResource("CapsuleShape2D_5dgfi")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
