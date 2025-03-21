@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpfot2smejosa"]
+
+[ext_resource type="Script" path="res://scenes/BackMenu.gd" id="1_qtlht"]
+
+[node name="ColorRect" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.848349, 0.0798274, 0.210386, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -430.0
+offset_top = -102.5
+offset_right = 430.0
+offset_bottom = 102.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 150
+text = "GAME OVER"
+
+[node name="BackMenu" type="LinkButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 50
+text = "Return to main menu"
+underline = 1
+script = ExtResource("1_qtlht")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BackMenu" to="MarginContainer/VBoxContainer/BackMenu" method="_on_pressed"]
